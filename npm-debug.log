@@ -1,0 +1,104 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/chairco/.nvm/versions/node/v6.9.2/bin/node',
+1 verbose cli   '/Users/chairco/.nvm/versions/node/v6.9.2/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.9
+3 info using node@v6.9.2
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/chairco/OneDrive/SourceCode/django/pycon/2017-talk/myslides',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/chairco/.npm/shower/2.1.9/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/chairco/.npm correctMkdir not in flight; initializing
+10 info lifecycle shower@2.1.9~prepublish: shower@2.1.9
+11 silly lifecycle shower@2.1.9~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/chairco/.npm/shower/2.1.9/package.tgz',
+12 verbose tar pack   '/Users/chairco/OneDrive/SourceCode/django/pycon/2017-talk/myslides' ]
+13 verbose tarball /Users/chairco/.npm/shower/2.1.9/package.tgz
+14 verbose folder /Users/chairco/OneDrive/SourceCode/django/pycon/2017-talk/myslides
+15 verbose addLocalTarball adding from inside cache /Users/chairco/.npm/shower/2.1.9/package.tgz
+16 verbose correctMkdir /Users/chairco/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd shower@2.1.9
+18 verbose afterAdd /Users/chairco/.npm/shower/2.1.9/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/chairco/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/chairco/.npm/shower/2.1.9/package/package.json written
+21 silly publish { name: 'shower',
+21 silly publish   description: 'Shower HTML presentation engine',
+21 silly publish   version: '2.1.9',
+21 silly publish   author: { name: 'Vadim Makeev', url: 'http://pepelsbey.net/' },
+21 silly publish   homepage: 'https://github.com/shower/shower',
+21 silly publish   repository: { type: 'git', url: 'git://github.com/shower/shower.git' },
+21 silly publish   bugs: { url: 'http://github.com/shower/shower/issues' },
+21 silly publish   license: 'MIT',
+21 silly publish   keywords: [ 'shower', 'presentation', 'template' ],
+21 silly publish   files: [ 'pictures/**', 'index.html', 'LICENSE.md', 'README.md' ],
+21 silly publish   dependencies:
+21 silly publish    { 'shower-core': '^2.1.0',
+21 silly publish      'shower-material': '^1.0.11',
+21 silly publish      'shower-ribbon': '^2.0.10' },
+21 silly publish   devDependencies:
+21 silly publish    { del: '^2.2.1',
+21 silly publish      fs: '0.0.2',
+21 silly publish      gulp: '^3.9.1',
+21 silly publish      'gulp-gh-pages': '^0.5.4',
+21 silly publish      'gulp-rename': '^1.2.2',
+21 silly publish      'gulp-replace': '^0.5.4',
+21 silly publish      'gulp-rsync': '0.0.7',
+21 silly publish      'gulp-zip': '^4.0.0',
+21 silly publish      'merge-stream': '^1.0.0',
+21 silly publish      'path-exists-cli': '^1.0.0',
+21 silly publish      'run-sequence': '^1.2.2',
+21 silly publish      'shower-core': '^2.0.8' },
+21 silly publish   scripts:
+21 silly publish    { prepare: 'gulp prepare',
+21 silly publish      archive: 'gulp archive',
+21 silly publish      publish: 'gulp publish',
+21 silly publish      test: 'npm run prepare && ls prepared && npm run archive && path-exists archive.zip' },
+21 silly publish   readme: '# Shower Presentation Template [![Build Status](https://travis-ci.org/shower/shower.svg?branch=master)](https://travis-ci.org/shower/shower)\n\n<img src="pictures/logo.png" width="250" alt="Shower logo">\n\n> Shower [\'ʃəuə] noun. A person or thing that shows.\n\n1. Built on HTML, CSS and vanilla JavaScript\n2. Works in all modern browsers\n3. Themes are separated from engine\n4. Modular and extensible\n5. Fully keyboard accessible\n6. Printable to PDF\n\n[See it in action](http://shwr.me/). Includes [Ribbon](https://github.com/shower/ribbon/) and [Material](https://github.com/shower/material/) themes, and [core](https://github.com/shower/core/) with plugins.\n\nFollow [@shower_me](https://twitter.com/shower_me) for support and updates, [file an issue](https://github.com/shower/shower/issues/new) if you have any.\n\n## Quick Start\n\n1. Download and unzip [template archive](http://shwr.me/shower.zip)\n2. Open `index.html` and start creating your presentation\n\n## Advanced\n\n1. [Fork](https://github.com/shower/shower/fork) this repository\n2. Go to fork setting and rename it: `shower` → `my-slides`\n2. Clone it to your computer: `git clone git@github.com:username/my-slides.git`\n3. Go to `my-slides` folder and install dependencies: `npm install`\n4. Start creating your presentation\n\nOnce you’re done you can build a clean copy of your slides:\n\n\tnpm run prepare\n\nAnd you’ll find your presentation in `prepared` folder with only needed files in it. You can also run `npm run archive` to get the same files in `archive.zip`. But there’s more! You can easily publish your presentation online by running:\n\n\tnpm run publish\n\nAnd you’ll have your slides published on `http://username.github.io/my-slides/`.\n\n## Usage Examples\n\n- [Installable Web Apps](http://pepelsbey.net/pres/web-apps/)\n- [Clear and Sharp](http://pepelsbey.net/pres/clear-and-sharp/)\n- [CSS Management](http://pepelsbey.net/pres/knife-train/)\n- [Push it!](http://pepelsbey.net/pres/push-it/)\n- [Pre-fixes](http://pepelsbey.net/pres/pre-fixes/)\n- [Web In Curves](http://pepelsbey.net/pres/web-in-curves/)\n- [Sense Coding](http://pepelsbey.net/pres/sense-coding/)\n\n## Browser Support\n\nLatest stable versions of Chrome, Internet Explorer, Firefox, Opera and Safari are supported.\n\n## Contributing\n\nYou’re always welcome to contribute. Fork project, make changes and send it as pull request. But it’s better to file an [issue](https://github.com/shower/shower/issues) with your idea first. Read [contributing rules](CONTRIBUTING.md) for more details.\n\nMain contributors in historical order: [pepelsbey](https://github.com/pepelsbey), [jahson](https://github.com/jahson), [miripiruni](https://github.com/miripiruni), [kizu](https://github.com/kizu), [artpolikarpov](https://github.com/artpolikarpov), [tonyganch](https://github.com/tonyganch), [zloylos](https://github.com/zloylos).\n\n---\nLicensed under [MIT License](LICENSE.md).\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '67149189efc493228eb8fd8e4a54f81ea99da5f5',
+21 silly publish   _id: 'shower@2.1.9',
+21 silly publish   _shasum: 'ebffcb99bf7109a2cdd16bc9b15043af18cff83b',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name shower
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'shower',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'shower',
+26 silly mapToRegistry   name: 'shower',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/shower
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /Users/chairco/.npm/shower/2.1.9/package.tgz
+30 verbose stack Error: auth required for publishing
+30 verbose stack     at CachingRegistryClient.publish (/Users/chairco/.nvm/versions/node/v6.9.2/lib/node_modules/npm/node_modules/npm-registry-client/lib/publish.js:30:14)
+30 verbose stack     at /Users/chairco/.nvm/versions/node/v6.9.2/lib/node_modules/npm/lib/publish.js:138:14
+30 verbose stack     at mapToRegistry (/Users/chairco/.nvm/versions/node/v6.9.2/lib/node_modules/npm/lib/utils/map-to-registry.js:62:3)
+30 verbose stack     at publish_ (/Users/chairco/.nvm/versions/node/v6.9.2/lib/node_modules/npm/lib/publish.js:107:3)
+30 verbose stack     at Array.<anonymous> (/Users/chairco/.nvm/versions/node/v6.9.2/lib/node_modules/npm/node_modules/slide/lib/bind-actor.js:15:8)
+30 verbose stack     at LOOP (/Users/chairco/.nvm/versions/node/v6.9.2/lib/node_modules/npm/node_modules/slide/lib/chain.js:15:14)
+30 verbose stack     at LOOP (/Users/chairco/.nvm/versions/node/v6.9.2/lib/node_modules/npm/node_modules/slide/lib/chain.js:14:28)
+30 verbose stack     at chain (/Users/chairco/.nvm/versions/node/v6.9.2/lib/node_modules/npm/node_modules/slide/lib/chain.js:20:5)
+30 verbose stack     at /Users/chairco/.nvm/versions/node/v6.9.2/lib/node_modules/npm/lib/publish.js:73:5
+30 verbose stack     at RES (/Users/chairco/.nvm/versions/node/v6.9.2/lib/node_modules/npm/node_modules/inflight/inflight.js:23:14)
+31 verbose cwd /Users/chairco/OneDrive/SourceCode/django/pycon/2017-talk/myslides
+32 error Darwin 15.6.0
+33 error argv "/Users/chairco/.nvm/versions/node/v6.9.2/bin/node" "/Users/chairco/.nvm/versions/node/v6.9.2/bin/npm" "publish"
+34 error node v6.9.2
+35 error npm  v3.10.9
+36 error code ENEEDAUTH
+37 error need auth auth required for publishing
+38 error need auth You need to authorize this machine using `npm adduser`
+39 verbose exit [ 1, true ]

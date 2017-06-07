@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Shower Presentation Engine</title>
+	<title>2017 PyConTW Talk</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+	<!-- css style -->
+	<link rel="stylesheet" href="lib/shower/themes/styles/screen-16x10.css">
+	<link rel="stylesheet" href="lib/highlight/styles/github.css" type="text/css"/>
+	<!--<link rel="stylesheet" href="shower/themes/material/styles/screen-16x10.css">
+	<link rel="stylesheet" href="lib/highlight/styles/github.css" type="text/css"/>-->
 </head>
 <body class="shower list">
 
 	<header class="caption">
-		<h1>Shower Presentation Engine</h1>
-		<p>Yours Truly, Famous Inc.</p>
+		<h1>PyConTW 2017 TALK 用 Django 建立一個可以設定爬蟲排程任務與監控的網站</h1>
+		<p>2017-06-11, <a href="https://chairco.github.io">YiChieh Chen(Jason)</p>
 	</header>
 
-	<section class="slide" id="cover">
-		<h2>Shower Presentation Engine</h2>
-		<p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a></p>
+	<section class="slide no-number" id="cover">
+		<h2>用 Django 建立一個可以設定爬蟲排程任務與監控的網站</h2>
+		<p>2017-06-11, <a href="https://chairco.github.io">YiChieh Chen(Jason)</a></p>
 		<figure>
 			<img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
 			<figcaption class="white">
-				<a href="http://fiftyfootshadows.net/">© John Carey</a>
+				<a href="https://chairco.github.io/2017Talk-Django-crawler-monitor/">© YiChieh Chen</a>
 			</figcaption>
 		</figure>
 		<style>
@@ -28,14 +32,14 @@
 				margin:30px 0 0;
 				color:#FFF;
 				text-align:center;
-				font-size:70px;
+				font-size:60px;
 				}
 			#cover p {
 				margin:10px 0 0;
 				text-align:center;
 				color:#FFF;
 				font-style:italic;
-				font-size:20px;
+				font-size:30px;
 				}
 				#cover p a {
 					color:#FFF;
@@ -43,23 +47,131 @@
 		</style>
 	</section>
 
+	<section id="about-me" class="slide no-number twocol l60">
+		<div class="right">
+			<h2>About Me</h2>
+			<ul>
+				<li>YiChieh(Jason)</li>
+				<li>Master degree at the graduate school of Institute of Healthcare Information Management in CCU</li>
+				<li>Program Chair of PyCon Taiwan 2017</li>
+			</ul>
+		</div>
+		<div class="left">
+			<div class="citation">
+				<img class="fill w" src="pictures/me.jpg" alt="">
+			</div>
+		</div>
+	</section>
+
 	<section class="slide">
-		<h2>Shower key features</h2>
-		<ol>
-			<li>Built on HTML, CSS and vanilla JavaScript</li>
-			<li>Works in all modern browsers</li>
-			<li>Themes are separated from engine</li>
-			<li>Modular and extensible</li>
-			<li>Fully keyboard accessible</li>
-			<li>Printable to PDF</li>
-		</ol>
+		<h2>Outline</h2>
+		<ul>
+			<li class="next">排程任務、工具、相關框架</li>
+			<li class="next">用 Django 建立一個排程任務網站</li>
+			<li class="next">爬蟲程式範例</li>
+			<li class="next">任務程式範例</li>
+			<li class="next">前端設計</li>
+			<li class="next">如何透過 Django-Admin 建立任務</li>
+			<li class="next">Demo</li>
+		</ul>
 		<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
 	</section>
 
 	<section class="slide">
-		<h2>Plain text on your slides</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
+		<h2>Story as background </h2>
+		<p>公司與工廠間再生產產品期間時需要經常即時的傳遞零組件資料，這些資料存在品牌公司的<em>資訊系統</em>。</p>
+		<p>這些資料需要定期<strong>人工下載、比對</strong>，但是品牌公司會基於某些原因與理由不開放 API 讓系統之間串接，因此爬蟲成了資料下載的管道。</p>
+		<p>一個工廠不會只生產一種產品，每種產品的零組件也不會只有幾十種。系統雖提供同一種下載模式（在同網站），但很多名稱不一定有規則，所以每個爬蟲程式多多少少需要一些客製化。然後...</p>
 	</section>
+
+	<section class="slide" id="picture">
+		<figure>
+			<img class="cover" src="pictures/heisdie.jpg" alt="law-in-shit">
+		</figure>
+	</section>
+
+	<section class="slide">
+		<h2>Story as background </h2>
+		<figure>
+			<blockquote>
+				<p>電話響鈴聲～</p>
+				<p>我：接起，您好我是 Jason</p>
+				<p>對方：批哩啪拉，資料又不對了，產線停止了，拉拉拉。阿拉花瓜...</p>
+				<p>我：現在檢查一下</p>
+				<p>對方：掛斷</p>
+			</blockquote>
+		</figure>
+	</section>
+
+	<section class="slide" id="picture">
+		<figure>
+			<img class="cover" src="pictures/blockman.jpeg" alt="wtf">
+		</figure>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout shrink">排程任務工具與框架</h2>
+	</section>
+
+	<section class="slide twocol l65">
+		<ol>
+			<li>首先先講一點點關於 Directed Acyclic Graph （ DAG ）的知識。</li>
+			<li>有些事情會有先後關係，舉例資料結構內用 Graph 來表示，vertex(穿襪子)、vertex(穿鞋子)與edge(先後關係)：</li>
+			<li>時間軸當作主角，緣起緣滅、緣聚緣散，凡事都是 DAG</li>
+		</ol>
+		<dir class="left">
+			<div class="citation">
+				<img class="fill w" src="pictures/graph1.png" alt="graph1">
+				<p>這樣的 Graph 顯示在穿鞋子之前必須先套上襪子。</p>
+			</div>
+		</dir>
+	</section>
+
+	<section class="slide twocol l65">
+		<ul>
+			<li>選課系統要如何確保在選修「演算法分析」之前，已經先選修「資料結構」，而在選修「資料結構」之前，已經先修完「程式(一)」與「離散數學」？</li>
+			<li>關於這件事會用 Topological Sort(拓撲排序) 的演算法。就能確保我們在執行某些事情時照著某種順序進行。</li>
+		</ul>
+		<div class="left">
+			<div class="citation">
+				<img class="fill w" src="pictures/graph2.png" alt="graph2">
+			</div>
+		</div>
+	</section>
+
+	<section class="slide twocol l65">
+		<h2>Topological Sort (拓撲排序)</h2>
+		<div class="right">
+			<ul>
+				<li>若 Directed Acyclic Graph(DAG) 中存在一條 edge(X,Y)，那麼序列中，vertex(X) 一定要在 vertex(Y) 之前出現。</li>
+			</ul>
+		</div>
+		<div class="left">
+			<div class="citation">
+				<img class="fill w" src="pictures/graph3.png" alt="graph3">
+				<p>edge(2,6)、edge(6,9)，那麼 Topological Sort 中，vertex(2) 一定要出現在 vertex(6) 之前，vertex(6) 一定要在 vertex(9) 前</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="slide twocol l65">
+		<div class="right">
+			<p>實現一個排程的任務，就是要實作一個<em>DAG</em>。 而且有很多使用 <i>Python</i> 開發的 workflow system (有國外大大稍微整理一下，大約<code>&lt;130&gt;</code>個)。天啊！</p>
+		</div>
+		<div class="left">
+			<div class="citation">
+				<img class="fill w" src="pictures/workflow_list.png" alt="workflow_list">
+				<p>Ref: <a href="https://github.com/common-workflow-language/common-workflow-language/wiki/Existing-Workflow-systems">Computational Data Analysis Workflow Systems</a></p>
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+
+
 
 	<section class="slide">
 		<h2>Two columns if you like</h2>
@@ -193,11 +305,17 @@
 	</section>
 
 	<footer class="badge">
-		<a href="https://github.com/shower/shower">Fork me on GitHub</a>
+		<a href="https://github.com/chairco/2017Talk-Django-crawler-monitor">Fork me on GitHub</a>
 	</footer>
 
 	<div class="progress"></div>
 
+	<!-- Library -->
+	<!-- <script src="lib/shower/shower.min.js"></script>
+	<script src="lib/highlight/highlight.pack.js" type="text/javascript" charset="utf-8"></script> -->
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
 	<script src="shower/shower.min.js"></script>
 	<!-- Copyright © 2017 Yours Truly, Famous Inc. -->
 
