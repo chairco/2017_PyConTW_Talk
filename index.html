@@ -81,10 +81,10 @@
 		<h2>Story as background </h2>
 		<p>公司與工廠間再生產產品期間時需要經常即時的傳遞零組件資料，這些資料存在品牌公司的<em>資訊系統</em>。</p>
 		<p>這些資料需要定期<strong>人工下載、比對</strong>，但是品牌公司會基於某些原因與理由不開放 API 讓系統之間串接，因此爬蟲成了資料下載的管道。</p>
-		<p>一個工廠不會只生產一種產品，每種產品的零組件也不會只有幾十種。系統雖提供同一種下載模式（在同網站），但很多名稱不一定有規則，所以每個爬蟲程式多多少少需要一些客製化。然後...</p>
+		<p>一個工廠不會只生產一種產品，每種產品的零組件也不會只有幾十種。系統雖提供同一種下載模式（在同網站），但很多名稱不一定有規則，所以每個爬蟲程式多多少少需要一些客製化。<b>然後...然後...然後...</b></p>
 	</section>
 
-	<section class="slide" id="picture">
+	<section class="slide">
 		<figure>
 			<img class="cover" src="pictures/heisdie.jpg" alt="law-in-shit">
 		</figure>
@@ -103,14 +103,14 @@
 		</figure>
 	</section>
 
-	<section class="slide" id="picture">
+	<section class="slide">
 		<figure>
 			<img class="cover" src="pictures/blockman.jpeg" alt="wtf">
 		</figure>
 	</section>
 
 	<section class="slide">
-		<h2 class="shout shrink">排程任務工具與框架</h2>
+		<h2 class="shout shrink">排程任務<br>工具與框架</h2>
 	</section>
 
 	<section class="slide twocol l65">
@@ -166,6 +166,175 @@
 		</div>
 	</section>
 
+	<section class="slide twocol l65">
+		<div class="right">
+			<h2><a href="https://github.com/thieman/dagobah">Dagobah</a></h2>
+			<ul>
+				<li>一個用 Python 實作的 simple dependency-based job scheduler。</li>
+				<li>採 cron 語法在網頁上設定 schedule 然後透過拖、拉、放的方式在網頁上連結不同 job 來建立任務。</li>
+			</ul>
+		</div>
+		<div class="left">
+			<div class="citation">
+				<img class="fill w" src="pictures/dagobah.png" alt="dagobah">
+			</div>
+		</div>
+	</section>
+
+	<section class="slide twocol l65">
+		<div class="right">
+			<h2><a href="https://github.com/spotify/luigi">Luigi</a></h2>
+			<ul>
+				<li>Spotify 所開發的開源軟體。主要協助建立複雜與批次的 pipline jobs。</li>
+				<li>優勢是用來處理高度相依的工作流程管理和可視覺化。分別用 Python 撰寫兩大模組達成。</li>
+				<li>沒有提供 job task 的 schedule module。</li>
+			</ul>
+		</div>
+		<div class="left">
+			<div class="citation">
+				<img class="fill w" src="pictures/luigi.png" alt="luigi">
+			</div>
+		</div>
+	</section>
+
+	<section class="slide twocol l65">
+		<div class="right">
+			<h2><a href="https://github.com/pinterest/pinball">Pinball</a></h2>
+			<ul>
+				<li>也是一個 workflow system 但比較特別是遵守 master-client (或是 master-worker) 的架構。所以它是透過 master 來管理例如 schedule, worker ….</li>
+				<li>將 hadoop/hive/spark jobs 整合的很不錯。</li>
+			</ul>
+		</div>
+		<div class="left">
+			<div class="citation">
+				<img class="fill w" src="pictures/pinball.png" alt="pinball">
+			</div>
+		</div>
+	</section>
+
+	<section class="slide twocol l65">
+		<div class="right">
+			<h2><a href="https://github.com/apache/incubator-airflow">Airflow</a></h2>
+			<ul>
+				<li>Airbnb 的開源軟體。採 Python 開發。與剛剛提到的 Luigi 和 Pinball 相似。</li>
+				<li>後端主要是以 Flask 和 Celery 建立。</li>
+			</ul>
+		</div>
+		<div class="left">
+			<div class="citation">
+				<img class="fill w" src="pictures/airflow.png" alt="airflow">
+			</div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2><a href="http://bytepawn.com/luigi-airflow-pinball.html">Luigi vs Airflow vs Pinball</a></h2>
+		<table>
+		<tr>
+			<th scope="col"></th>
+			<th>Luigi</th>
+			<th>Airflow</th>
+			<th>Pinball</th>
+		</tr>
+		<tr>
+			<th scope="row">Fingerstache</th>
+			<td>Kale</td>
+			<td>Chips</td>
+			<td>Keytar</td>
+		</tr>
+		<tr>
+			<th scope="row">Sriracha</th>
+			<td>Gluten-free</td>
+			<td>Ennui</td>
+			<td>Keffiyeh</td>
+		</tr>
+		<tr>
+			<th scope="row">Thundercats</th>
+			<td>Jean</td>
+			<td>Shorts</td>
+			<td>Biodiesel</td>
+		</tr>
+		<tr>
+			<th scope="row">Terry</th>
+			<td>Richardson</td>
+			<td>Swag</td>
+			<td>Blog</td>
+		</tr>
+		</table>
+		<p>It’s good to have information organized.</p>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">建立一個<br>排程任務網站</h2>
+	</section>
+
+	<section class="slide">
+		<h2>RequirementS</h2>
+		<ol>
+			<li>需要一個簡單設定任務排程（整合起來不複雜）</li>
+			<li class="next">可以把爬蟲的程式簡單的包進進去（模組化）</li>
+			<li class="next">監控流程與狀態（開始運行提示、運行時的狀況）</li>
+			<li class="next">簡單就做出來的前端頁面（也可說是熟悉）</li>
+			<li class="next">最後...我就是想用 Django</li>
+		</ol>
+	</section>
+
+	<section class="slide grid">
+		<h2>Django 的套件從那找？</h2>
+		<p>有一個挺好用的網站叫 <a href="https://djangopackages.org/grids/g/search/">Django Packages </a>網羅了許多<b> Django </b>套件，其中有一個分類叫：<em>Workers, Queues, and Tasks</em> 有列出很多相關的套件。</p>
+		<div class="left">
+			<div class="citation">
+				<img class="fill w" src="pictures/djangopkg.png" alt="djpkg">
+			</div>
+		</div>
+	</section>
+
+	<section class="slide" id="picture">
+		<h2>Pictures</h2>
+		<figure>
+			<img class="cover" src="pictures/pkglist.png" alt="pkglist">
+		</figure>
+		<style>
+			#picture h2 {
+				color:#FFF;
+				}
+		</style>
+	</section>
+
+	<section class="slide">
+		<h2>Django 簡介與設定</h2>
+		<figure>
+			<blockquote>
+				<p>Django Q is a <b>native</b> Django task queue, scheduler and worker application using Python multiprocessing.</p>
+				<p>Django Q is tested with: Python 2.7 & 3.6. Django 1.8.18 LTS, 1.10.7 and 1.11</p>
+			</blockquote>
+		</figure>
+	</section>
+
+	<section class="slide">
+		<h2>Feature</h2>
+		<ul>
+			<li>Multiprocessing worker pools</li>
+			<li>Asynchronous tasks</li>
+			<li>Scheduled and repeated tasks</li>
+			<li>Encrypted and compressed packages</li>
+			<li>Failure and success database or cache</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Feature</h2>
+		<ul>
+			<li>Result hooks, groups and chains</li>
+			<li>Django Admin integration</li>
+			<li>PaaS compatible with multiple instances</li>
+			<li>Multi cluster monitor</li>
+			<li>Redis, Disque, IronMQ, SQS, MongoDB or ORM</li>
+			<li>Rollbar support</li>
+		</ul>
+	</section>
+
+
 
 
 
@@ -217,43 +386,6 @@
 		</pre>
 	</section>
 
-	<section class="slide">
-		<h2>Even tables</h2>
-		<table>
-		<tr>
-			<th scope="col">Locavore</th>
-			<th>Umami</th>
-			<th>Helvetica</th>
-			<th>Vegan</th>
-		</tr>
-		<tr>
-			<th scope="row">Fingerstache</th>
-			<td>Kale</td>
-			<td>Chips</td>
-			<td>Keytar</td>
-		</tr>
-		<tr>
-			<th scope="row">Sriracha</th>
-			<td>Gluten-free</td>
-			<td>Ennui</td>
-			<td>Keffiyeh</td>
-		</tr>
-		<tr>
-			<th scope="row">Thundercats</th>
-			<td>Jean</td>
-			<td>Shorts</td>
-			<td>Biodiesel</td>
-		</tr>
-		<tr>
-			<th scope="row">Terry</th>
-			<td>Richardson</td>
-			<td>Swag</td>
-			<td>Blog</td>
-		</tr>
-		</table>
-		<p>It’s good to have information organized.</p>
-	</section>
-
 	<section class="slide" id="picture">
 		<h2>Pictures</h2>
 		<figure>
@@ -282,10 +414,6 @@
 			<li class="next">But it will work only once</li>
 			<li class="next">Nobody wants to see the same joke twice</li>
 		</ol>
-	</section>
-
-	<section class="slide grid">
-		<h2>All nicely aligned to grid</h2>
 	</section>
 
 	<section class="slide" id="see-more">
