@@ -1,3 +1,5 @@
+node_modules/
+
 # Python virtualenv
 [.]venv
 env/
