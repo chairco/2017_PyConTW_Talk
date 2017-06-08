@@ -1,0 +1,19 @@
+{% extends 'crawler/_base.html' %}
+{% load humanize %}
+
+{% block title %}PyConTW | Task Deatails {{ block.super }}{% endblock title %}
+
+
+{% block content %}
+
+    <ul class="breadcrumb">
+        {% block bar %}{{ block.super }}
+            <li class="active"><a href="{% url 'crawler' %}">task crawler list</a></li>
+            <li class="active">task detail</li>
+        {% endblock bar %}
+    </ul>
+
+    <h2>content</h2>
+    <pre>{{ result }}</pre>
+
+{% endblock content %}

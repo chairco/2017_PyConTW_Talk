@@ -61,7 +61,7 @@ class Crawler(object):
 
     @property
     def driver_path(self):
-        def_driver_path = os.path.join(self.BASE_DIR, 'nimbus', 'phantomjs-2.1.1', 'bin', 'phantomjs')
+        def_driver_path = os.path.join(self.BASE_DIR, 'crawler', 'phantomjs-2.1.1', 'bin', 'phantomjs')
         driver_path = self.kwargs.get('driver_path', def_driver_path)
         
         if not os.path.exists(driver_path):

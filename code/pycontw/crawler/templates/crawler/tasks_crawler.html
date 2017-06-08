@@ -1,0 +1,64 @@
+{% extends 'crawler/_base.html' %}
+{% load humanize %}
+
+{% block title %}Crawler | task crawler{{ block.super }}{% endblock title %}
+
+{% block content %}
+
+    <ul class="breadcrumb">
+        {% block bar %}{{ block.super }}
+            <li class="active">task crawler</li>
+        {% endblock bar %}
+    </ul>
+
+    <h2>佇列任務列表</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Task ID</th>
+            <th>Task Name</th>
+            <th>Task Type</th>
+            <th>Task Params</th>
+            <th>Created</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for task in queue_crawler %}
+            <tr>
+                <td>{{ task.id }}</td>
+                <td>{{ task.name }}</td>
+                <td>{{ task.func }}</td>
+                <td>{{ task.task.kwargs }}</td>
+                <td>{{ task.task.started|naturaltime }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>過去任務紀錄</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Task ID</th>
+            <th>Order Name</th>
+            <th>URL</th>
+            <th>Time taken</th>
+            <th>Complete on</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for task in complete_crawler %}
+            <tr>
+                <td><a href="{% url 'view_task' id=task.id %}">{{ task.id }}</a></td>
+                <td>{{ task.name }}</td>
+                <td>{{ task.kwargs.url }}</td>
+                <td>{{ task.time_taken }}</td>
+                <td>{{ task.stopped|naturaltime }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+
+
+{% endblock content %}
