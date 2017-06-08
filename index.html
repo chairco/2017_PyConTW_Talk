@@ -29,17 +29,17 @@
 		</figure>
 		<style>
 			#cover h2 {
-				margin:30px 0 0;
+				margin:30px 20 5;
 				color:#FFF;
 				text-align:center;
-				font-size:60px;
+				font-size:50px;
 				}
 			#cover p {
 				margin:10px 0 0;
-				text-align:center;
+				text-align:right;
 				color:#FFF;
 				font-style:italic;
-				font-size:30px;
+				font-size:20px;
 				}
 				#cover p a {
 					color:#FFF;
@@ -70,8 +70,8 @@
 			<li class="next">用 Django 建立一個排程任務網站</li>
 			<li class="next">爬蟲程式範例</li>
 			<li class="next">任務程式範例</li>
-			<li class="next">前端設計</li>
 			<li class="next">如何透過 Django-Admin 建立任務</li>
+			<li class="next">前端設計</li>
 			<li class="next">Demo</li>
 		</ul>
 		<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
@@ -477,6 +477,13 @@
 	</section>
 
 	<section class="slide">
+		<p><code>$ python manage.py qcluster</code> 的介面會顯示執行時狀態</p>
+		<div class="left">
+			<img class="fill w" src="pictures/process.png" alt="process">
+		</div>
+	</section>
+
+	<section class="slide">
 		<div class="left">
 			<p>Scheduled tasks 設定成功的畫面，最後一欄會顯示目前執行結果的狀態。</p>
 			<img class="fill w" src="pictures/schedule_tasks_3.png" alt="schedule_tasks_3">
@@ -491,6 +498,49 @@
 			<img class="fill w" src="pictures/schedule_tasks_5.png" alt="schedule_tasks_5">
 		</div>
 	</section>
+
+	<section class="slide">
+		<h2 class="shout">前端頁面<br>設計</h2>
+	</section>
+
+	<section class="slide">
+        <p>希望有一個頁面可以即時的看到任務正在執行，和已經結束的任務。還能點進去觀看任務詳細執行歷程。</p>
+        <div class="left">
+			<div class="citation">
+				<img class="fill w" src="pictures/tasks.png" alt="tasks">
+			</div>
+		</div>
+    </section>
+
+	<section class="slide">
+        <p>首先在 <b>crawler/views.py</b> 新增一個 <code>view_task</code> 取的所有 tasks</p>
+        <pre>
+            <code class="mark">def view_task(request, id):</code>
+            <code>    task = get_object_or_404(Task, id=id)</code>
+            <code>    result = task.result</code>
+            <code>    if task.func == 'crawler.tasks.crawler_job':</code>
+            <code>        return render(request, 'crawler/tasks_detail.html', {</code>
+            <code>            'result': result,})</code>
+            <code>    return Http404(</code>
+            <code>    'Given task of type %s does not have the....'</code>
+            <code>    % task.func)</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+    	<p><code>def crawler(request)</code> 取得每個 task 的 detail</p>
+        <pre>
+            <code class="mark">def crawler(request):</code>
+            <code>    queue_crawler = OrmQ.objects.all().order_by('lock')</code>
+            <code>    complete_crawler = Task.objects.all().filter(</code>
+            <code>        func__exact='crawler.tasks.crawler_job',</code>
+            <code>    )</code>
+            <code>    return render(request, 'crawler/tasks_crawler.html', {</code>
+            <code>        'queue_crawler': queue_crawler,</code>
+            <code>        'complete_crawler': complete_crawler</code>
+            <code>    })</code>
+        </pre>
+    </section>
 
 	<section class="slide" id="see-more">
 		<h2 class="shout">
