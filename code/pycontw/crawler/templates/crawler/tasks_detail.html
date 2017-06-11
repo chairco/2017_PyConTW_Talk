@@ -13,7 +13,13 @@
         {% endblock bar %}
     </ul>
 
-    <h2>content</h2>
+    <h2>crawler log</h2>
+    <p>
+        回傳值: <code>{{ ret }}</code>, 
+        回傳狀態: <code>{{ status }}</code>,
+        版本: <code>{{ version }}</code>
+        執行函式: <code>crawler.crawler_job</code>
+    </p>
     <pre>{{ result }}</pre>
 
 {% endblock content %}

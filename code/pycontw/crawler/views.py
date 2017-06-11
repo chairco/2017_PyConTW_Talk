@@ -20,9 +20,30 @@ def view_task(request, id):
     task = get_object_or_404(Task, id=id)
     result = task.result
     if task.func == 'crawler.tasks.crawler_job':
-        return render(request, 'crawler/tasks_detail.html', {
-            'result': result,
-        })
+        if type(result) is type(OrderedDict()): 
+            return render(request, 'crawler/tasks_detail.html', {
+                #'ret': result['ret'],
+                #'status': result['status'],
+                #'version': result['version'],
+                'result': result['crawler_job'],
+            })
+        else:
+            return render(request, 'crawler/tasks_detail.html', {
+                'result': result,
+            })
+    if task.func == 'crawler.tasks.job':
+        print(result)
+        if type(result) is type(OrderedDict()): 
+            return render(request, 'crawler/tasks_detail.html', {
+                #'ret': result['ret'],
+                #'status': result['status'],
+                #'version': result['version'],
+                'result': result['crawler_job'],
+            })
+        else:
+            return render(request, 'crawler/tasks_detail.html', {
+                'result': result,
+            })
     return Http404(
         'Given task of type %s does not have the result template '
         'to be rendered yet.'
@@ -36,7 +57,7 @@ def crawler(request):
 
     # Select finidhed crawler
     complete_crawler = Task.objects.all().filter(
-        func__exact='crawler.tasks.crawler_job',
+        func__exact='crawler.tasks.job',
     )
     return render(request, 'crawler/tasks_crawler.html', {
             'queue_crawler': queue_crawler,

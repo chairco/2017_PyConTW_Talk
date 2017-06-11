@@ -26,12 +26,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.i18n import set_language
 
-#from pages.views import index
+from crawler.views import crawler
 
 urlpatterns = i18n_patterns(
 
     # Add top-level URL patterns here.
-    #url(r'^$', index, name='home'),
+    url(r'^$', crawler, name='home'),
     url(r'^crawler/', include('crawler.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
 )

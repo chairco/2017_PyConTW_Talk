@@ -1,8 +1,12 @@
+import time
 import os
 import sys
 import django
 import requests
 import logging
+import uuid
+import lazy_logger
+from collections import OrderedDict
 
 from django.conf import settings
 
@@ -72,16 +76,46 @@ class Crawler(object):
         pass
 
 
-def test(url):
+def log_time():
+    """return str time
+    """
+    return str(time.strftime("%Y%m%d%H%M", time.localtime(time.time())))
+
+
+def test_lazylog(f):
+    def lazylog(*args, **kwargs):
+        log_path = os.path.join(os.getcwd(), 'logs', log_time()+'-'+str(uuid.uuid1())+'.log')
+        lazy_logger.log_to_console(logger)
+        lazy_logger.log_to_rotated_file(logger=logger,file_name=log_path)
+        logger.info('logger file: {0}'.format(log_path))
+        kwargs['log_path'] = log_path
+        return f(*args, **kwargs)
+    return lazylog
+
+
+def get_log(file, title):
+    with open(file, 'rb') as fp:
+        logs = OrderedDict([(title, fp.read())])
+    return logs
+
+
+@test_lazylog
+@logger.patch
+def test(url, *args, **kwargs):
     PHANTOMJS='/Users/chairco/OneDrive/SourceCode/django/radar/radar/nimbus/phantomjs-2.1.1/bin/phantomjs'
     crawler = Crawler(driver_path=PHANTOMJS)
     driver = crawler.driver()
     driver.get(url)
     pageSource = driver.page_source
     soup = bs(pageSource, "html.parser")
-    print(soup.title, type(soup.title))
+    #print(soup.title, type(soup.title))
+    print('{}, {}'.format(type(soup.title), soup.title))
+    #logger.info('{}'.format(soup.title))
     driver.close()
-    return pageSource
+    ret = OrderedDict((('ret', 255), ('status', 'success'), ('version', '')))
+    logs = get_log(file=kwargs['log_path'], title='test')
+    ret.update(logs)
+    return logs
 
 
 
