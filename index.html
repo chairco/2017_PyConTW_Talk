@@ -51,7 +51,7 @@
 		<div class="right">
 			<h2>About Me</h2>
 			<ul>
-				<li>YiChieh(Jason)</li>
+				<li><a href="https://chairco.github.io">YiChieh(Jason)</a></li>
 				<li>Master degree at the graduate school of Institute of Healthcare Information Management in CCU</li>
 				<li>Program Chair of PyCon Taiwan 2017</li>
 			</ul>
@@ -67,14 +67,14 @@
 		<h2>Outline</h2>
 		<ul>
 			<li class="next">排程任務、工具、相關框架</li>
-			<li class="next">用 Django 建立一個排程任務網站</li>
+			<li class="next">建立一個排程任務網站</li>
 			<li class="next">爬蟲程式範例</li>
 			<li class="next">任務程式範例</li>
 			<li class="next">如何透過 Django-Admin 建立任務</li>
 			<li class="next">前端設計</li>
 			<li class="next">Demo</li>
 		</ul>
-		<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
+		<!--<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>-->
 	</section>
 
 	<section class="slide">
@@ -82,6 +82,34 @@
 		<p>公司與工廠間再生產產品期間時需要經常即時的傳遞零組件資料，這些資料存在品牌公司的<em>資訊系統</em>。</p>
 		<p>這些資料需要定期<strong>人工下載、比對</strong>，但是品牌公司會基於某些原因與理由不開放 API 讓系統之間串接，因此爬蟲成了資料下載的管道。</p>
 		<p>一個工廠不會只生產一種產品，每種產品的零組件也不會只有幾十種。系統雖提供同一種下載模式（在同網站），但很多名稱不一定有規則，所以每個爬蟲程式多多少少需要一些客製化。<b>然後...然後...然後...</b></p>
+	</section>
+
+	<section class="slide">
+        <div class="left">
+	        <pre>
+	            <code>try:</code>
+	            <code class="mark">    driver.get("https://{}")</code>
+	            <code>    content = wait.until(lambda driver:<br>        driver.find_element_by_id("accountname"),"link fail")</code>
+	            <code class="mark">    wait.until(lambda driver: driver.find_element_by_id<br>       ("accountname"),"FAIL to find account")</code>
+	            <code>    driver.find_element_by_id("accountname").send_keys("{}")</code>
+	            <code>    driver.find_element_by_id("accountpassword").send_keys("{}")</code>
+	            <code>    driver.find_element_by_id("continueFieldbutton").click()</code>
+	        </pre>
+        	<p><a href="https://gist.github.com/chairco/e0cbcdd66755e6130f3ed2b869889655">BAD IDEAL</a></p>
+        </div>
+    </section>
+
+	<section class="slide twocol l65">
+		<p>設定排程</p>
+		<div class="citation">
+			<img class="fill w" src="pictures/crontab.png" alt="crontab">
+		</div>
+	</section>
+
+	<section class="slide">
+		<figure>
+			<img class="cover" src="pictures/bang.jpg" alt="bang">
+		</figure>
 	</section>
 
 	<section class="slide">
@@ -95,9 +123,9 @@
 		<figure>
 			<blockquote>
 				<p>電話響鈴聲～</p>
-				<p>我：接起，您好我是 Jason</p>
-				<p>對方：批哩啪拉，資料又不對了，產線停止了，拉拉拉。阿拉花瓜...</p>
-				<p>我：現在檢查一下</p>
+				<p>對方：資料又沒抓到啦</p>
+				<p>對方：你什麼時候可以修好！！</p>
+				<p>對方：我現在要資料！！</p>
 				<p>對方：掛斷</p>
 			</blockquote>
 		</figure>
@@ -243,24 +271,30 @@
 				<td>506</td>
 			</tr>
 			<tr>
-				<th scope="row">architecture</th>
-				<th></th>
-				<th></th>
-				<th></th>
+				<th scope="row">calendar scheduling</th>
+				<th>no, use cron</th>
+				<th>yes, LocalScheduler</th>
+				<th>yes</th>
 			</tr>
 			<tr>
 				<th scope="row">web dashboard</th>
-				<td>not really, minimal</td>
+				<td>minimal</td>
 				<td>nice</td>
 				<td>yes</td>
 			</tr>
 			<tr>
 				<th scope="row">multiple dags</th>
 				<td>no, just one</td>
-				<td>yes, also several dag instances (dagruns)</td>
+				<td>yes</td>
 				<td>yes</td>
 			</tr>
 		</table>
+	</section>
+
+	<section class="slide">
+		<figure>
+			<img class="cover" src="pictures/rayfun.png" alt="rayfun">
+		</figure>
 	</section>
 
 	<section class="slide">
@@ -270,10 +304,10 @@
 	<section class="slide">
 		<h2>RequirementS</h2>
 		<ol>
-			<li>需要一個簡單設定任務排程（整合起來不複雜）</li>
+			<li>簡單整合任務排程（整合起來不複雜）</li>
 			<li class="next">可以把爬蟲的程式簡單的包進進去（模組化）</li>
 			<li class="next">監控流程與狀態（開始運行提示、運行時的狀況）</li>
-			<li class="next">簡單就做出來的前端頁面（也可說是熟悉）</li>
+			<li class="next">容易就做出來的前端頁面（熟悉？）</li>
 			<li class="next">最後...我就是想用 Django</li>
 		</ol>
 	</section>
@@ -301,7 +335,19 @@
 	</section>
 
 	<section class="slide">
-		<h2>Django-Q 簡介與設定</h2>
+		<h2>等等，你是不是還忘記些什麼？Celery 大大呢？</h2>
+		<ul>
+			<li class="next"><a href="https://github.com/Koed00/django-q/issues/8">Why not Celery</a></li>
+			<ul>
+				<li class="next">Django native</li>
+				<li class="next">簡單設定</li>
+				<li class="next">快速</li>
+			</ul>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Django-Q 簡介與設定方式</h2>
 		<figure>
 			<blockquote>
 				<p>Django Q is a <b>native</b> Django task queue, scheduler and worker application using Python multiprocessing.</p>
@@ -348,7 +394,7 @@
 	</section>
 
 	<section class="slide">
-		<h2>安裝與設定方式</h2>
+		<h2>安裝與<a href="https://django-q.readthedocs.io/en/latest/configure.html">設定</a>方式</h2>
 		<p>
 			Run Django migrations to create the database tables:<br>
 			<code>$ python manage.py migrate</code><br>
@@ -440,7 +486,7 @@
             <code>    pageSource = driver.page_source</code>
             <code>    soup = bs(pageSource, "html.parser")</code>
             <code>    driver.close()</code>
-            <code>    return pageSource</code>
+            <code>    return soup</code>
         </pre>
     </section>
 
@@ -541,6 +587,21 @@
             <code>    })</code>
         </pre>
     </section>
+
+    <section class="slide">
+        <p>
+        	介紹一個好用的 logging 套件，<a href="https://github.com/Python-Logging-For-Human/lazy_logger">lazy_logger</a>。
+        </p>
+        <div class="left">
+			<div class="citation">
+				<img class="fill w" src="pictures/lazy_logger.png" alt="lazy_logger">
+			</div>
+		</div>
+    </section>
+
+    <section class="slide">
+		<h2 class="shout">Demo</h2>
+	</section>
 
 	<section class="slide" id="see-more">
 		<h2 class="shout">
