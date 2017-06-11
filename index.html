@@ -507,7 +507,7 @@
 	</section>
 
 	<section class="slide">
-		<p>在 <b>/crawler/</b> 下建立一個 <b>tasks.py</b> 這個檔案將用來撰寫與管理我們的任務。接著我們把前面用來測試的程式碼 <code>def test(url)</code>加到 <b>tasks.py</b> 內，就完成第一隻 task。</p>
+		<p>在 <b>/crawler/</b> 下建立一個 <b>tasks.py</b> 這個檔案將用來撰寫與管理我們的任務。接著我們把前面用來測試的程式碼改個名稱 <code>def crawler_job(url)</code>加到 <b>tasks.py</b> 內，就完成第一隻 task。</p>
 		<p>接著進入到 admin 的後台，新增一個 schedule task 測試看看。</p>
 		<div class="left">
 			<div class="citation">
@@ -568,23 +568,8 @@
 		</div>
     </section>
 
-	<section class="slide">
-        <p>首先在 <b>crawler/views.py</b> 新增一個 <code>view_task</code> 取的所有 tasks</p>
-        <pre>
-            <code class="mark">def view_task(request, id):</code>
-            <code>    task = get_object_or_404(Task, id=id)</code>
-            <code>    result = task.result</code>
-            <code>    if task.func == 'crawler.tasks.crawler_job':</code>
-            <code>        return render(request, 'crawler/tasks_detail.html', {</code>
-            <code>            'result': result,})</code>
-            <code>    return Http404(</code>
-            <code>    'Given task of type %s does not have the....'</code>
-            <code>    % task.func)</code>
-        </pre>
-    </section>
-
     <section class="slide">
-    	<p><code>def crawler(request)</code> 取得每個 task 的 detail</p>
+        <p>首先在 <b>crawler/views.py</b> 新增一個 <code>view_task</code> 取的所有 tasks</p>
         <pre>
             <code class="mark">def crawler(request):</code>
             <code>    queue_crawler = OrmQ.objects.all().order_by('lock')</code>
@@ -595,6 +580,21 @@
             <code>        'queue_crawler': queue_crawler,</code>
             <code>        'complete_crawler': complete_crawler</code>
             <code>    })</code>
+        </pre>
+    </section>
+
+	<section class="slide">
+		<p><code>def crawler(request)</code> 取得每個 task 的 detail</p>
+        <pre>
+            <code class="mark">def view_task(request, id):</code>
+            <code>    task = get_object_or_404(Task, id=id)</code>
+            <code>    result = task.result</code>
+            <code>    if task.func == 'crawler.tasks.crawler_job':</code>
+            <code>        return render(request, 'crawler/tasks_detail.html', {</code>
+            <code>            'result': result,})</code>
+            <code>    return Http404(</code>
+            <code>    'Given task of type %s does not have the....'</code>
+            <code>    % task.func)</code>
         </pre>
     </section>
 
