@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "7bf86145cfca067f5624298f32a4a6258ed314176bfb776025c9b7dc986c913a"
+            "sha256": "d3dae88c57150560d9018773be41101cc2ed973965954484cfcd95d79b7383e4"
         },
         "requires": {},
         "sources": [
@@ -15,11 +15,23 @@
         "arrow": {
             "version": "==0.10.0"
         },
+        "beautifulsoup4": {
+            "version": "==4.6.0"
+        },
         "blessed": {
             "version": "==1.14.2"
         },
+        "certifi": {
+            "version": "==2017.4.17"
+        },
+        "chardet": {
+            "version": "==3.0.4"
+        },
         "django": {
             "version": "==1.11.2"
+        },
+        "django-environ": {
+            "version": "==0.4.3"
         },
         "django-picklefield": {
             "version": "==0.3.2"
@@ -30,14 +42,26 @@
         "future": {
             "version": "==0.16.0"
         },
+        "idna": {
+            "version": "==2.5"
+        },
         "python-dateutil": {
             "version": "==2.6.0"
         },
         "pytz": {
             "version": "==2017.2"
         },
+        "requests": {
+            "version": "==2.17.3"
+        },
+        "selenium": {
+            "version": "==3.4.3"
+        },
         "six": {
             "version": "==1.10.0"
+        },
+        "urllib3": {
+            "version": "==1.21.1"
         },
         "wcwidth": {
             "version": "==0.1.7"

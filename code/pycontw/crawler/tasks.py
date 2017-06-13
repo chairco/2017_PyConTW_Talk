@@ -39,8 +39,8 @@ def get_log(file, title):
     return logs
 
 
-@call_lazylog
 @logger.patch
+@call_lazylog
 def crawler_job(url, *args, **kwargs):
     crawler = Crawler()
     driver = crawler.driver()
@@ -49,13 +49,10 @@ def crawler_job(url, *args, **kwargs):
     soup = bs(pageSource, "html.parser")
     print('{}'.format(soup.title))
     driver.close()
-
-    print(kwargs['log_path'])
     ret = OrderedDict((('ret', 255), ('status', 'success'), ('version', '')))
     logs = get_log(file=kwargs['log_path'], title='crawler_job')
     ret.update(logs)
-    print(ret)
-    return logs
+    return ret
 
 
 def job(url):
@@ -64,8 +61,6 @@ def job(url):
     lazy_logger.log_to_rotated_file(logger=logger,file_name=log_path)
     logger.info('logger file: {0}'.format(log_path))
 
-    time.sleep(10)
-
     crawler = Crawler()
     driver = crawler.driver()
     driver.get(url)
@@ -73,7 +68,6 @@ def job(url):
     soup = bs(pageSource, "html.parser")
     print('{}'.format(soup.title))
     driver.close()
-
     ret = OrderedDict((('ret', 0), ('status', 'Success'), ('version', '0.1')))
     logs = get_log(file=log_path, title='crawler_job')
     ret.update(logs)
