@@ -39,6 +39,7 @@ def call_lazylog(f):
     return lazylog
 
 
+@logger.patch
 @call_lazylog
 def crawler_job(url, *args, **kwargs):
     crawler = Crawler()
@@ -47,6 +48,7 @@ def crawler_job(url, *args, **kwargs):
     pageSource = driver.page_source
     soup = bs(pageSource, "html.parser")
     logger.info('{}'.format(soup.title))
+    print('get web title success')
     driver.close()
     ret = OrderedDict((('ret', 0), ('status', 'Success'), ('version', '1.0')))
     logs = get_log(file=kwargs['log_path'], title='crawler_job')
