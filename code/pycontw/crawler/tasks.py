@@ -22,6 +22,12 @@ def log_time():
     return str(time.strftime("%Y%m%d%H%M", time.localtime(time.time())))
 
 
+def get_log(file, title):
+    with open(file, 'rb') as fp:
+        logs = OrderedDict([(title, fp.read())])
+    return logs
+
+
 def call_lazylog(f):
     def lazylog(*args, **kwargs):
         log_path = os.path.join(os.getcwd(), 'logs', log_time()+'-'+str(uuid.uuid1())+'.log')
@@ -33,13 +39,6 @@ def call_lazylog(f):
     return lazylog
 
 
-def get_log(file, title):
-    with open(file, 'rb') as fp:
-        logs = OrderedDict([(title, fp.read())])
-    return logs
-
-
-@logger.patch
 @call_lazylog
 def crawler_job(url, *args, **kwargs):
     crawler = Crawler()
@@ -47,9 +46,9 @@ def crawler_job(url, *args, **kwargs):
     driver.get(url)
     pageSource = driver.page_source
     soup = bs(pageSource, "html.parser")
-    print('{}'.format(soup.title))
+    logger.info('{}'.format(soup.title))
     driver.close()
-    ret = OrderedDict((('ret', 255), ('status', 'success'), ('version', '')))
+    ret = OrderedDict((('ret', 0), ('status', 'Success'), ('version', '1.0')))
     logs = get_log(file=kwargs['log_path'], title='crawler_job')
     ret.update(logs)
     return ret
@@ -72,7 +71,4 @@ def job(url):
     logs = get_log(file=log_path, title='crawler_job')
     ret.update(logs)
     return ret
-
-
-
 

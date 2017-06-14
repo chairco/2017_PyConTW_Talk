@@ -22,9 +22,9 @@ def view_task(request, id):
     if task.func == 'crawler.tasks.crawler_job':
         if type(result) is type(OrderedDict()): 
             return render(request, 'crawler/tasks_detail.html', {
-                #'ret': result['ret'],
-                #'status': result['status'],
-                #'version': result['version'],
+                'ret': result['ret'],
+                'status': result['status'],
+                'version': result['version'],
                 'result': result['crawler_job'],
             })
         else:
@@ -32,12 +32,11 @@ def view_task(request, id):
                 'result': result,
             })
     if task.func == 'crawler.tasks.job':
-        print(result)
         if type(result) is type(OrderedDict()): 
             return render(request, 'crawler/tasks_detail.html', {
-                #'ret': result['ret'],
-                #'status': result['status'],
-                #'version': result['version'],
+                'ret': result['ret'],
+                'status': result['status'],
+                'version': result['version'],
                 'result': result['crawler_job'],
             })
         else:
@@ -57,7 +56,7 @@ def crawler(request):
 
     # Select finidhed crawler
     complete_crawler = Task.objects.all().filter(
-        func__exact='crawler.tasks.job',
+        func__exact='crawler.tasks.crawler_job',
     )
     return render(request, 'crawler/tasks_crawler.html', {
             'queue_crawler': queue_crawler,
