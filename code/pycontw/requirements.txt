@@ -10,7 +10,7 @@ django-picklefield==0.3.2
 django-q==0.8.0
 future==0.16.0
 idna==2.5
-lazy-logger==0.1.1
+lazy-logger==0.1.2
 packaging==16.8
 pew==0.1.26
 pyparsing==2.2.0
