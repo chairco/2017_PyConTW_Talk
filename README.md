@@ -15,9 +15,10 @@
     touch django.log ghostdriver.log project.log
     ```
 
-+ 建立環境變數 local.env
++ 建立環境變數 local.env, local.py
     ```shell
     cp pycontw/settings/local_sample.env pycontw/settings/local.env
+    cp pycontw/settings/local_sample.py pycontw/settings/local.py
     ```
 
 + 設定環境變數
