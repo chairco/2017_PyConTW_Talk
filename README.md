@@ -6,6 +6,20 @@
 + [大會網站](https://tw.pycon.org/2017/events/talk/314386410792550475/)
 + [共筆內容](http://beta.hackfoldr.org/pycontw2017/https%253A%252F%252Fhackmd.io%252Fs%252FSJlQavv1b)
 
+## 範例環境設定
++ 建立環境變數 local.env
+```shell
+cp pycontw\pycontw\settings\local_sample.env pycontw\pycontw\settings\local.env
+```
++ 設定環境變數
+在執行終端機模式執行下面指令取得 Secret_key：
+```shell
+$ python -c 'import random; import string; print("".join([random.SystemRandom().choice(string.digits + string.ascii_letters + string.punctuation) for i in range(100)]))'']'
+```
+`vim local.env` 將剛剛產生的 key 填入 SECRET_KEY= 不用加引號 ''
+
++ 確認 requirments.txt 內套件都安裝，執行 migrate 就完成了。
+
 
 ## 講題摘要
 一位小工程師，經常需要取得客戶資料又遭遇客戶不開放 API 接口來取得資料。為此經常需要撰寫爬蟲程式爬資料。但爬蟲任務變多時管理變得複雜，早期會透過 Linux crontab 設定時刻表來安排爬蟲任務，卻容易出現各種例外，例如：透過 selenium 來爬網頁可能因為不可預期使得瀏覽器 driver 沒有被正常關閉的錯誤，進而可能產生非常多死掉的 processes 得經常做各種錯誤檢查（不管透過自動化程式或是人工）。幾次因為不同的錯誤原因造成無法正常取得資料加上工程師講求效率不愛人工檢查（懶惰）的性格因而萌生開發念頭。
