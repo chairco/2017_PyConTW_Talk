@@ -472,21 +472,6 @@
             <code>    pageSource = driver.page_source</code>
             <code>    soup = bs(pageSource, "html.parser")</code>
             <code>    driver.close()</code>
-            <code>    return pageSource</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2><a href="https://github.com/chairco/2017Talk-Django-crawler-monitor/blob/master/code/pycontw/crawler/crawler.py">Code samples</a></h2>
-        <pre>
-            <code class="mark">if __name__ == '__main__':</code>
-            <code>    PHANTOMJS='{path}'</code>
-            <code>    crawler = Crawler(driver_path=PHANTOMJS):</code>
-            <code>    driver = crawler.driver()</code>
-            <code>    driver.get(url)</code>
-            <code>    pageSource = driver.page_source</code>
-            <code>    soup = bs(pageSource, "html.parser")</code>
-            <code>    driver.close()</code>
             <code>    return soup</code>
         </pre>
     </section>
@@ -495,7 +480,7 @@
         <h2><a href="https://github.com/chairco/2017Talk-Django-crawler-monitor/blob/master/code/pycontw/crawler/crawler.py">Code samples</a></h2>
         <p>隨便爬個網頁，得到一些結果。就完成了爬蟲程式。</p>
         <pre>
-            <code class="mark">def test(url):</code>
+            <code class="mark">if __name__ == '__main__':</code>
             <code>    logging.basicConfig(level=logging.INFO,
         format='%(asctime)s:%(name)s:%(levelname)s:%(message)s')</code>
             <code>    print(test(url='http://pala.tw/js-example/'))</code>
