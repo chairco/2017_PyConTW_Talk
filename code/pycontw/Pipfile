@@ -1,0 +1,28 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+
+[packages]
+arrow = "==0.10.0"
+beautifulsoup4 = "==4.6.0"
+blessed = "==1.14.2"
+certifi = "==2017.4.17"
+chardet = "==3.0.3"
+Django = "==1.11.1"
+django-environ = "==0.4.3"
+django-picklefield = "==0.3.2"
+django-q = "==0.8.0"
+future = "==0.16.0"
+idna = "==2.5"
+lazy_logger = "==0.1.2"
+pew = "==0.1.26"
+python-dateutil = "==2.6.0"
+pythonz-bd = "==1.11.4"
+pytz = "==2017.2"
+requests = "==2.17.3"
+resumable-urlretrieve = "==0.1.5"
+selenium = "==3.4.3"
+urllib3 = "==1.21.1"
+virtualenv = "==15.1.0"
+virtualenv-clone = "==0.2.6"
+wcwidth = "==0.1.7"
