@@ -9,7 +9,7 @@
 ## 範例環境設定
 + 建立環境變數 local.env
     ```shell
-    cp pycontw\pycontw\settings\local_sample.env pycontw\pycontw\settings\local.env
+    cp pycontw/settings/local_sample.env pycontw/settings/local.env
     ```
 
 + 設定環境變數
@@ -20,7 +20,8 @@
     `vim local.env` 將剛剛產生的 key 填入 SECRET_KEY= 不用加引號 ''
 
 + 確認 requirments.txt 內套件都安裝，執行 migrate 就完成了。
-
+    因為 lazy_logger 最新版本 0.1.2 尚未上傳到 PyPi 所以請先到 lazy-logger 資料夾內 `python setup.py install` 安裝最新版本 lazy_logger
+ 
 
 ## 講題摘要
 一位小工程師，經常需要取得客戶資料又遭遇客戶不開放 API 接口來取得資料。為此經常需要撰寫爬蟲程式爬資料。但爬蟲任務變多時管理變得複雜，早期會透過 Linux crontab 設定時刻表來安排爬蟲任務，卻容易出現各種例外，例如：透過 selenium 來爬網頁可能因為不可預期使得瀏覽器 driver 沒有被正常關閉的錯誤，進而可能產生非常多死掉的 processes 得經常做各種錯誤檢查（不管透過自動化程式或是人工）。幾次因為不同的錯誤原因造成無法正常取得資料加上工程師講求效率不愛人工檢查（懶惰）的性格因而萌生開發念頭。

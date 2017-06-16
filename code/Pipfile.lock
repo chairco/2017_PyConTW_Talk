@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d3dae88c57150560d9018773be41101cc2ed973965954484cfcd95d79b7383e4"
+            "sha256": "c561673322f7ae57f59471f9c1ca58a075b008a2d428ecf598a0d333889c80fd"
         },
         "requires": {},
         "sources": [
@@ -45,6 +45,9 @@
         "idna": {
             "version": "==2.5"
         },
+        "lazy-logger": {
+            "version": "==0.1.1"
+        },
         "python-dateutil": {
             "version": "==2.6.0"
         },
@@ -52,7 +55,7 @@
             "version": "==2017.2"
         },
         "requests": {
-            "version": "==2.17.3"
+            "version": "==2.18.1"
         },
         "selenium": {
             "version": "==3.4.3"
