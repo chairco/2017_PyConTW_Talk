@@ -479,7 +479,7 @@
     <section class="slide">
         <h2><a href="https://github.com/chairco/2017Talk-Django-crawler-monitor/blob/master/code/pycontw/crawler/crawler.py">Code samples</a></h2>
         <pre>
-            <code class="mark">def test(url):</code>
+            <code class="mark">if __name__ == '__main__':</code>
             <code>    PHANTOMJS='{path}'</code>
             <code>    crawler = Crawler(driver_path=PHANTOMJS):</code>
             <code>    driver = crawler.driver()</code>
@@ -569,7 +569,7 @@
     </section>
 
     <section class="slide">
-        <p>首先在 <b>crawler/views.py</b> 新增一個 <code>view_task</code> 取的所有 tasks</p>
+        <p>首先在 <b>crawler/views.py</b> 新增一個 <code>crawler(request)</code>取的所有 tasks</p>
         <pre>
             <code class="mark">def crawler(request):</code>
             <code>    queue_crawler = OrmQ.objects.all().order_by('lock')</code>
@@ -584,7 +584,7 @@
     </section>
 
 	<section class="slide">
-		<p><code>def crawler(request)</code> 取得每個 task 的 detail</p>
+		<p><code>view_task(request, id)</code>  取得每個 task 的 detail</p>
         <pre>
             <code class="mark">def view_task(request, id):</code>
             <code>    task = get_object_or_404(Task, id=id)</code>
