@@ -1,9 +1,10 @@
 # 用 Django 建立一個可以設定爬蟲排程任務與監控的網站
 
 + PyConTW 2017 Talk
-+ Slider:https://chairco.github.io/2017Talk-Django-crawler-monitor/#about-me
 + Speaker: Yi-Chieh Chen
-+ [大會介紹](https://tw.pycon.org/2017/events/talk/314386410792550475/)
++ [Slider](https://chairco.github.io/2017Talk-Django-crawler-monitor/#about-me)
++ [大會網站](https://tw.pycon.org/2017/events/talk/314386410792550475/)
++ [共筆內容](http://beta.hackfoldr.org/pycontw2017/https%253A%252F%252Fhackmd.io%252Fs%252FSJlQavv1b)
 
 
 ## 講題摘要
