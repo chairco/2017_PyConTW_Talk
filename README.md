@@ -8,10 +8,12 @@
 
 ## 範例環境設定
 + 建立 log 資料夾和 .log 檔案
-    `cd code/pycontw/`
-    `mkdir -p logs`
-    `cd logs`
-    `touch django.log ghostdriver.log project.log`
+    ```shell
+    cd code/pycontw/
+    mkdir -p logs
+    cd logs
+    touch django.log ghostdriver.log project.log
+    ```
 
 + 建立環境變數 local.env
     ```shell
