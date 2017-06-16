@@ -7,6 +7,12 @@
 + [共筆內容](http://beta.hackfoldr.org/pycontw2017/https%253A%252F%252Fhackmd.io%252Fs%252FSJlQavv1b)
 
 ## 範例環境設定
++ 建立 log 資料夾和 .log 檔案
+    `cd code/pycontw/`
+    `mkdir -p logs`
+    `cd logs`
+    `touch django.log ghostdriver.log project.log`
+
 + 建立環境變數 local.env
     ```shell
     cp pycontw/settings/local_sample.env pycontw/settings/local.env
