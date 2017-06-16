@@ -8,15 +8,16 @@
 
 ## 範例環境設定
 + 建立環境變數 local.env
-```shell
-cp pycontw\pycontw\settings\local_sample.env pycontw\pycontw\settings\local.env
-```
+    ```shell
+    cp pycontw\pycontw\settings\local_sample.env pycontw\pycontw\settings\local.env
+    ```
+
 + 設定環境變數
-在執行終端機模式執行下面指令取得 Secret_key：
-```shell
-$ python -c 'import random; import string; print("".join([random.SystemRandom().choice(string.digits + string.ascii_letters + string.punctuation) for i in range(100)]))'']'
-```
-`vim local.env` 將剛剛產生的 key 填入 SECRET_KEY= 不用加引號 ''
+    在執行終端機模式執行下面指令取得 Secret_key：
+    ```shell
+    $ python -c 'import random; import string; print("".join([random.SystemRandom().choice(string.digits + string.ascii_letters + string.punctuation) for i in range(100)]))'']'
+    ```
+    `vim local.env` 將剛剛產生的 key 填入 SECRET_KEY= 不用加引號 ''
 
 + 確認 requirments.txt 內套件都安裝，執行 migrate 就完成了。
 
