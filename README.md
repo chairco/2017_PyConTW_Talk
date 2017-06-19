@@ -29,7 +29,7 @@
     `vim local.env` 將剛剛產生的 key 填入 SECRET_KEY= 不用加引號 ''
 
 + 確認 requirments.txt 內套件都安裝，執行 migrate 就完成了。
-    因為 lazy_logger 最新版本 0.1.2 尚未上傳到 PyPi 所以請先到 lazy-logger 資料夾內 `python setup.py install` 安裝最新版本 lazy_logger
+    ~因為 lazy_logger 最新版本 0.1.2 尚未上傳到 PyPi 所以請先到 lazy-logger 資料夾內 `python setup.py install` 安裝最新版本 lazy_logger~ 確認 lazy_logger 的版本是 0.1.2 萬一低於 0.1.2 版本會造成使用 @logger.patch 的 hook 回傳值是 None。
  
 
 ## 講題摘要

@@ -1,3 +1,0 @@
-bal-include README* LICENSE*
-include README.rst README.md LICENSE.txt
-global-exclude *.pyc
