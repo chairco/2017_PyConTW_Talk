@@ -2,7 +2,7 @@
 
 + PyConTW 2017 Talk
 + Speaker: Yi-Chieh Chen
-+ [Slider](https://chairco.github.io/2017Talk-Django-crawler-monitor/#about-me)
++ [Slider](https://chairco.github.io/2017Talk-Django-crawler-monitor/#cover)
 + [大會網站](https://tw.pycon.org/2017/events/talk/314386410792550475/)
 + [共筆內容](http://beta.hackfoldr.org/pycontw2017/https%253A%252F%252Fhackmd.io%252Fs%252FSJlQavv1b)
 
