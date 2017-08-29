@@ -5,6 +5,7 @@
 + [Slider](https://chairco.github.io/2017Talk-Django-crawler-monitor/#cover)
 + [大會網站](https://tw.pycon.org/2017/events/talk/314386410792550475/)
 + [共筆內容](http://beta.hackfoldr.org/pycontw2017/https%253A%252F%252Fhackmd.io%252Fs%252FSJlQavv1b)
++ [錄影](https://www.youtube.com/watch?v=Ljs9e0kI7Ow)
 
 ## 範例環境設定
 + 建立 log 資料夾和 .log 檔案
