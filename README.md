@@ -25,7 +25,7 @@
 + 設定環境變數
     在執行終端機模式執行下面指令取得 Secret_key：
     ```shell
-    $ python -c 'import random; import string; print("".join([random.SystemRandom().choice(string.digits + string.ascii_letters + string.punctuation) for i in range(100)]))'']'
+    $ python -c 'import random; import string; print("".join([random.SystemRandom().choice(string.digits + string.ascii_letters + string.punctuation) for i in range(100)]))'
     ```
     `vim local.env` 將剛剛產生的 key 填入 SECRET_KEY= 不用加引號 ''
 
