@@ -1,6 +1,6 @@
 # driver
-phantomjs-2.1.1/
-nimbus/selenium-2.27/
+#phantomjs-2.1.1/
+#nimbus/selenium-2.27/
 
 # excel & Folder
 *.xls
